@@ -7,7 +7,7 @@ This repository contains implementations of fundamental **data structures** in J
 ## Project Structure
 
 ```
-Java.Projects/
+Data-Structure-Implementations/
 |
 ├── List/
 |   └── src/
@@ -21,9 +21,13 @@ Java.Projects/
 |   └── src/
 |       └── Queue.java
 |
-└── Stack/
+├── Stack/
+|   └── src/
+|       └── Stack.java
+|
+└── HeapTree/
     └── src/
-        └── Stack.java
+        └──  HeapTree.java
 ```
 
 ---
@@ -81,6 +85,21 @@ A custom stack implementation using an array-based approach.
 - Check if empty or full
 - Get size
 - Generic implementation
+
+### HeapTree
+
+A complete binary tree implementation supporting both Min Heap and Max Heap operations.
+
+**Features:**
+- Min Heap and Max Heap support
+- Array-based implementation for efficient operations
+- Insert, extract, peek operations
+- Remove specific values
+- Contains and count operations
+- Heap property validation
+- Sort via heap sort
+- Merge two heaps
+- Tree visualization
 
 ---
 
