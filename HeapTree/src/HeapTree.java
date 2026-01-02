@@ -155,13 +155,74 @@ public class HeapTree {
         return sb.toString();
     }
 
-    // prints heap in tree format
+    // prints heap in tree format (visual)
     public void printTree() {
         if (isEmpty()) {
             System.out.println("heap is empty");
             return;
         }
-        printNode(0, "", true);
+        int height = (int) (Math.log(size) / Math.log(2));
+        int lines = height + 1;
+        int cols = (int) Math.pow(2, lines + 1) * 2;
+        char[][] canvas = new char[lines * 2][cols];
+        for (int i = 0; i < canvas.length; i++) {
+            for (int j = 0; j < canvas[i].length; j++) {
+                canvas[i][j] = ' ';
+            }
+        }
+        printNodeRec(0, 0, cols / 2, lines, canvas);
+        // Trim trailing spaces
+        for (int i = 0; i < canvas.length; i++) {
+            int lastNonSpace = canvas[i].length - 1;
+            while (lastNonSpace >= 0 && canvas[i][lastNonSpace] == ' ') {
+                lastNonSpace--;
+            }
+            if (lastNonSpace >= 0) {
+                for (int j = 0; j <= lastNonSpace; j++) {
+                    System.out.print(canvas[i][j]);
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    private void printNodeRec(int index, int level, int pos, int totalLevels, char[][] canvas) {
+        if (index >= size) return;
+        String str = String.valueOf(heap[index]);
+        int start = pos - str.length() / 2;
+        for (int i = 0; i < str.length(); i++) {
+            canvas[level * 2][start + i] = str.charAt(i);
+        }
+        if (level < totalLevels - 1) {
+            int leftPos = pos - (int) Math.pow(2, totalLevels - level - 1);
+            int rightPos = pos + (int) Math.pow(2, totalLevels - level - 1);
+            int line = level * 2 + 1;
+            int branchLine = level * 2 + 2;
+            int left = 2 * index + 1;
+            int right = 2 * index + 2;
+            if (left < size) {
+                canvas[line][pos] = '|';
+                canvas[branchLine][leftPos] = '/';
+                for (int i = leftPos + 1; i <= pos; i++) {
+                    canvas[branchLine][i] = '-';
+                }
+            }
+            if (right < size) {
+                canvas[line][pos] = '|';
+                canvas[branchLine][rightPos] = '\\';
+                for (int i = pos; i < rightPos; i++) {
+                    canvas[branchLine][i] = '-';
+                }
+            }
+            if (left < size && right >= size) {
+                canvas[line][pos] = '|';
+            }
+            if (right < size && left >= size) {
+                canvas[line][pos] = '|';
+            }
+            printNodeRec(left, level + 1, leftPos, totalLevels, canvas);
+            printNodeRec(right, level + 1, rightPos, totalLevels, canvas);
+        }
     }
 
     // merges another heap into this one
@@ -290,19 +351,6 @@ public class HeapTree {
             arr[largest] = swap;
             sortHeapify(arr, n, largest);
         }
-    }
-
-    private void printNode(int index, String prefix, boolean isLeft) {
-        if (index >= size) return;
-
-        System.out.println(prefix + (isLeft ? "├── " : "└── ") + heap[index]);
-
-        int left = 2 * index + 1;
-        int right = 2 * index + 2;
-
-        String newPrefix = prefix + (isLeft ? "│   " : "    ");
-        if (left < size) printNode(left, newPrefix, true);
-        if (right < size) printNode(right, newPrefix, false);
     }
 
     private void resize() {

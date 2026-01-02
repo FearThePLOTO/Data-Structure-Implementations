@@ -1,6 +1,6 @@
 # Java Data Structures
 
-This repository contains implementations of fundamental **data structures** in Java. Each data structure is built from scratch without relying on built-in Java collections, making this repo a practical resource for understanding how these structures work internally.
+This repository contains implementations of fundamental **data structures** in Java. Each data structure is built from scratch without relying on built-in Java collections.
 
 ---
 
@@ -11,23 +11,33 @@ Data-Structure-Implementations/
 |
 ├── List/
 |   └── src/
-|       └── List.java
+|       ├── List.java
+|       └── App.java
 |
 ├── LinkedList/
 |   └── src/
-|       └── LinkedList.java
+|       ├── LinkedList.java
+|       └── App.java
 |
 ├── Queue/
 |   └── src/
-|       └── Queue.java
+|       ├── Queue.java
+|       └── App.java
 |
 ├── Stack/
 |   └── src/
-|       └── Stack.java
+|       ├── Stack.java
+|       └── App.java
 |
-└── HeapTree/
+├── HeapTree/
+|   └── src/
+|       ├── HeapTree.java
+|       └── App.java
+|
+└── BSTree/
     └── src/
-        └──  HeapTree.java
+        ├── BinarySearchTree.java
+        └── App.java
 ```
 
 ---
@@ -36,16 +46,16 @@ Data-Structure-Implementations/
 
 ### List
 
-A custom dynamic array implementation similar to Java's `ArrayList`.
+A custom dynamic array implementation similar to Java's ArrayList.
 
 **Features:**
 - Dynamic resizing when capacity is reached
 - Add elements at the end of the list
 - Get and set elements by index
-- Remove elements by index (with automatic shifting)
+- Remove elements by index with automatic shifting
 - Check if empty or full
 - Clear all elements
-- Custom `toString` method for easy printing
+- Display all elements in readable format
 
 ### LinkedList
 
@@ -60,7 +70,7 @@ A custom singly linked list implementation.
 - Check if the list is empty
 - Get current size
 - Clear all elements
-- Display all elements in a readable format
+- Display all elements in readable format
 
 ### Queue
 
@@ -93,13 +103,38 @@ A complete binary tree implementation supporting both Min Heap and Max Heap oper
 **Features:**
 - Min Heap and Max Heap support
 - Array-based implementation for efficient operations
-- Insert, extract, peek operations
-- Remove specific values
-- Contains and count operations
-- Heap property validation
-- Sort via heap sort
-- Merge two heaps
-- Tree visualization
+- Insert single or multiple values
+- Extract root element
+- Peek at root without removing
+- Remove specific values from the heap
+- Check if value exists and count occurrences
+- Validate heap property
+- Convert to sorted array via heap sort
+- Merge two heaps of same type
+- Tree structure visualization
+- Auto-resizing when capacity is exceeded
+
+### BinarySearchTree
+
+A complete Binary Search Tree implementation with full functionality.
+
+**Features:**
+- Insert single or multiple keys
+- Search for keys in the tree
+- Delete keys (handles leaf nodes, single child, and two children cases)
+- Get minimum and maximum values
+- Inorder traversal returns sorted array
+- Preorder traversal for root-left-right order
+- Postorder traversal for left-right-root order
+- Get tree height
+- Count leaf nodes
+- Calculate depth of specific keys
+- Count nodes at a given level
+- Validate BST property
+- Check if empty
+- Clear all nodes
+- Print tree structure in visual format
+- Print level order traversal
 
 ---
 

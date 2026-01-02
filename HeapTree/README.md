@@ -94,6 +94,17 @@ heap.printTree();  // print tree structure
 System.out.println(heap);  // compact format like: MinHeap: [10, 20, 30]
 ```
 
+Example output:
+```
+                               10
+                                |
+                       20--------------15
+                        |               |
+                   30------50           60
+                    |       |           |
+                 40--    25--        70--
+```
+
 ## API Reference
 
 | Method | Description |
@@ -113,7 +124,6 @@ System.out.println(heap);  // compact format like: MinHeap: [10, 20, 30]
 | `toArray()` | Return array copy |
 | `merge(HeapTree other)` | Merge another heap |
 | `printTree()` | Print tree structure |
-
 
 ## Time Complexity
 
